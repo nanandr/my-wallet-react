@@ -2,7 +2,7 @@ import Card from "./Card";
 
 export default function Container() {
   return (
-    <div className="p-4 sm:ml-64">
+    <div className="sm:p-4 sm:ml-64">
       <div className="p-4 rounded-lg dark:border-gray-700">
         <div className="grid grid-cols-2 gap-4 mb-4">
           <Card>

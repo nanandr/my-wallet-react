@@ -3,9 +3,11 @@ import Card from "./Card";
 import { MonthPicker } from "react-lite-month-picker";
 
 export default function Sidebar() {
+  const currentDate = new Date();
+
   const [selectedMonth, setSelectedMonth] = useState({
-    month: 4,
-    year: 2024,
+    month: currentDate.getMonth() + 1,
+    year: currentDate.getFullYear(),
   });
 
   const [isPickerOpen, setIsPickerOpen] = useState(false);
@@ -64,16 +66,12 @@ export default function Sidebar() {
               showMonthPicker={isPickerOpen}
               separator
             />
-            {/* <MonthInput
-              selected={selectedMonth}
-              setShowMonthPicker={setIsPickerOpen}
-              showMonthPicker={isPickerOpen}
-            /> */}
             {isPickerOpen ? (
               <MonthPicker
                 setIsOpen={setIsPickerOpen}
                 selected={selectedMonth}
                 onChange={setSelectedMonth}
+                size="small"
               />
             ) : null}
             <NavLink
@@ -144,7 +142,7 @@ function MonthInput({
       }
     >
       <button
-        className="w-full flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-zinc-800 group"
+        className="w-full flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 active:bg-gray-200 dark:hover:bg-zinc-800 dark:active:bg-zinc-900 group"
         type="button"
         onClick={() => setShowMonthPicker(!showMonthPicker)}
       >
@@ -168,7 +166,7 @@ function NavLink({ href, icon, title, active, separator, children }) {
         href={href}
         className={
           (active ? "text-primary" : "text-gray-900 dark:text-white") +
-          " flex items-center p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-zinc-800 group"
+          " flex items-center p-2 rounded-lg hover:bg-gray-100 active:bg-gray-200 dark:hover:bg-zinc-800 dark:active:bg-zinc-900 group"
         }
       >
         <img
